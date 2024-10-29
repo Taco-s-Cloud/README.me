@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  user-profile:
+    build:
+      context: ./user-profile
+    ports:
+      - "5003:5003"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/cloud-computing-439018-1fe7a15a6278.json
+    volumes:
+      - ./Credentials:/app/credentials
+
+  task-manager:
+    build:
+      context: ./task-manager
+    ports:
+      - "5001:5001"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/cloud-computing-439018-1fe7a15a6278.json
+    volumes:
+      - ./Credentials:/app/credentials
+
+  schedule-manager:
+    build:
+      context: ./schedule-manager
+    ports:
+      - "5002:5002"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/cloud-computing-439018-1fe7a15a6278.json
+    volumes:
+      - ./Credentials:/app/credentials
+
+  ui:
+    build:
+      context: ./ui
+    ports:
+      - "80:80"  # Expose the UI on localhost:80
+
