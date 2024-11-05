@@ -33,7 +33,7 @@ services:
 
   ui:
     build:
-      context: ./ui
+      context: ./Taco-UI
     ports:
       - "80:80"  # Expose the UI on localhost:80
 
